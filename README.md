@@ -16,6 +16,14 @@ Experimental but working.
 
 What has been developed has been tested, even though not as thoroughly as I would have liked. *In particular* any scenario that causes a failure hasn't really been tested. For example: what happens when we query a server and the server returns malformed data (probably a null pointer reference somewhere)? What if the server connection times-out in the middle of sending the server list? Stuff like that.
 
+## Usage
+
+Check out the tests or [documentation](#documentation) to see how you can use the functions.
+
+### Documentation
+
+Until I've figured out a way to include the documentation as a stand-alone thing (in a downloadable archive, online or something else) you can get the documentation yourself by downloading the source (using `go get`) and starting the `godoc` server with the following command: `godoc -http :6060`. You can then browse the documentation using your browser on `http://localhost:6060`.
+
 ## Features
 
 * Query the master server(s) to get a server list (`servers.GetServerList`)
