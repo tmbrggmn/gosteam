@@ -25,7 +25,9 @@ What has been developed has been tested, even though not as thoroughly as I woul
 In order of importance:
 
 1.  Add time-out support to the server query functions so that clients can avoid getting stuck when something goes wrong reading from the UDP connection
+
 2.  Add support for A2S_PLAYER server queries
+
 3.  Add support for the RCON protocol
     
 	It would be particularly cool if we could implement this with a writable and readable channel, where the writeable channel is used to stream commands in real-time. Ordering might be a problem though. Then again, ordering is a problem anyway.
