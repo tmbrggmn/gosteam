@@ -12,7 +12,7 @@ func TestGetServerInfo(t *testing.T) {
 	case serverInfo := <-serverInfoChannel:
 		t.Logf("Received server info: %s", serverInfo)
 	case error := <-errorChannel:
-		t.Fatalf("Error during server list fecthing: %s", error.Error())
+		t.Fatalf("Error during server info fecthing: %s", error.Error())
 	}
 }
 
@@ -23,6 +23,6 @@ func ExampleGetServerInfo() {
 	case serverInfo := <-serverInfoChannel:
 		fmt.Printf("Received server info: %s", serverInfo)
 	case error := <-errorChannel:
-		fmt.Errorf("Error during server list fecthing: %s", error.Error())
+		fmt.Errorf("Error during server info fecthing: %s", error.Error())
 	}
 }
