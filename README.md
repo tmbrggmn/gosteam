@@ -1,5 +1,3 @@
-# gosteam
-
 ## Intent
 
 gosteam aims to provide a set of functions that interact with various [Steam](http://store.steampowered.com/) interfaces. For example:
@@ -16,3 +14,4 @@ See the [Features](#features) section for more information.
 
 ## Features
 
+## Packages
