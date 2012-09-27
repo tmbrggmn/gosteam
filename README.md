@@ -47,7 +47,7 @@ In order of importance:
     
 	It would be particularly cool if we could implement this with a writable and readable channel, where the writeable channel is used to stream commands in real-time. Ordering might be a problem though. Then again, ordering is a problem anyway.
 
-# Known issues
+## Known issues
 
 * [GetServerInfo] When querying for server information, there are a number of bytes that contain *Extra Data*. Since it was [not immediately clear from the developer wiki](https://developer.valvesoftware.com/wiki/Talk:Server_Queries#S2A_INFO2_responses_don.27t_match_the_protocol) on how to unpack these extra data bytes, I didn't bother. It seems they contain the server tags (among other information), which would be useful information to unpack, but I haven't been in the mood recently to start to dissect that stuff. The extra data bytes are included in the response struct in their raw form.
 
