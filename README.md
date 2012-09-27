@@ -8,7 +8,7 @@ gosteam aims to provide a set of functions that interact with various [Steam](ht
 
 See the [Features](#features) section for more information.
 
-*Disclaimer*: I'm using this project largely as a playground for learning the [Go]() programming language. It's not at all unlikely that there are things in the codebase that are far from perfect, especially with regards to performance. If you spot a bug or stupidity somewhere, feel free to let me know and I'll try to do better.
+*Disclaimer*: I'm using this project largely as a playground for learning the [Go](http://golang.org) programming language. It's not at all unlikely that there are things in the codebase that are far from perfect, especially with regards to performance. If you spot a bug or stupidity somewhere, feel free to let me know and I'll try to do better.
 
 ## Current state
 
