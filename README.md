@@ -18,7 +18,14 @@ What has been developed has been tested, even though not as thoroughly as I woul
 
 ## Features
 
+* Query the master server(s) to get a server list (`servers.GetServerList`)
+* Query individual servers to get their information (`servers.GetServerInfo`)
+
 ## Packages
+
+*   `servers`
+
+    Contains all functions that relate to the Steam/Source servers.
 
 ## Things to do
 
