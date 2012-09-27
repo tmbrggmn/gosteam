@@ -2,8 +2,8 @@
 
 gosteam aims to provide a set of functions that interact with various [Steam](http://store.steampowered.com/) interfaces. For example:
 
-* Query the Steam master server to get a list of game servers
-* Query individual Steam/Source game servers for information
+* Query the Steam master server to get a list of game servers ([Steam documentation](https://developer.valvesoftware.com/wiki/Master_Server_Query_Protocol))
+* Query individual Steam/Source game servers for information ([Steam documentation](https://developer.valvesoftware.com/wiki/Server_Queries))
 * ...
 
 See the [Features](#features) section for more information.
