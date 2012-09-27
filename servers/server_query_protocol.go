@@ -59,7 +59,7 @@ func (serverInfo ServerInfo) String() string {
 
 // Retrieve server information for the given server (in <ip>:<port> format).
 //
-// One of 2 things will happen: either a the serrver information is published on the server information channel or an error is published
+// One of 2 things will happen: either the server information is published on the server information channel or an error is published
 // on the error channel.
 func GetServerInfo(server string) (<-chan *ServerInfo, <-chan error) {
 	serverInfoChannel := make(chan *ServerInfo)
