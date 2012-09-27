@@ -1,0 +1,1 @@
+# gosteam - A Go library for Valve/Steam interfaces
