@@ -12,10 +12,11 @@ See the [Features](#features) section for more information.
 
 ## Current state
 
-Build status: [![Build Status](https://secure.travis-ci.org/tmbrggmn/gosteam.png)](http://travis-ci.org/tmbrggmn/gosteam)
-General status: Experimental but working.
+*   Build status: [![Build Status](https://secure.travis-ci.org/tmbrggmn/gosteam.png)](http://travis-ci.org/tmbrggmn/gosteam)
 
-What has been developed has been tested, even though not as thoroughly as I would have liked. *In particular* any scenario that causes a failure hasn't really been tested. For example: what happens when we query a server and the server returns malformed data (probably a null pointer reference somewhere)? What if the server connection times-out in the middle of sending the server list? Stuff like that.
+*   General status: Experimental but working.
+
+    What has been developed has been tested, even though not as thoroughly as I would have liked. *In particular* any scenario that causes a failure hasn't really been tested. For example: what happens when we query a server and the server returns malformed data (probably a null pointer reference somewhere)? What if the server connection times-out in the middle of sending the server list? Stuff like that.
 
 ## Usage
 
