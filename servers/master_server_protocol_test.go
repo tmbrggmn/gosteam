@@ -39,7 +39,7 @@ func TestGetServerList_InvalidTimeout(t *testing.T) {
 	}
 }
 
-func TestGetServerList_UnknownHostMasterServer(t *testing.T) {
+func TestGetServerList_UnknownHostMasterServer_CI(t *testing.T) {
 	serversChannel, errorChannel := GetServerList(unknownHostMasterServer, Region_RestOfTheWorld, `\gamedir\naturalselection2`, "500ms")
 	for {
 		select {

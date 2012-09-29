@@ -31,7 +31,7 @@ func TestGetServerInfo_InvalidTimeout(t *testing.T) {
 	}
 }
 
-func TestGetServerInfo_UnknownHostServer(t *testing.T) {
+func TestGetServerInfo_UnknownHostServer_CI(t *testing.T) {
 	serverInfoChannel, errorChannel := GetServerInfo(unknownHostServer, "500ms")
 
 	select {
