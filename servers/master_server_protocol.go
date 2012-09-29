@@ -63,7 +63,9 @@ func (query serverListQuery) bytes() []byte {
 // The servers channel will be used to stream each newly read batch of Server objects. The error channel will serve
 // as a "control" channel to indicate that an error has occurred at some point during the operation. To indicate that 
 // there are no more servers to be streamed, a ChannelExhausted error will be sent on the error channel.
-func GetServerList(masterServer string, region ServerRegion, filter string) (<-chan []Server, <-chan error) {
+//
+// A timeout value is required. For example: 500ms. See time.ParseDuration for more information.
+func GetServerList(masterServer string, region ServerRegion, filter string, timeout string) (<-chan []Server, <-chan error) {
 	servers := make(chan []Server)
 	error := make(chan error)
 
@@ -72,6 +74,7 @@ func GetServerList(masterServer string, region ServerRegion, filter string) (<-c
 		outboundConnection, connectError := connect(masterServer)
 		if connectError != nil {
 			error <- connectError
+			return
 		}
 		defer outboundConnection.Close()
 
@@ -79,15 +82,22 @@ func GetServerList(masterServer string, region ServerRegion, filter string) (<-c
 		inboundConnection, listenError := listen(outboundConnection.LocalAddr().(*net.UDPAddr))
 		if listenError != nil {
 			error <- listenError
+			return
 		}
 		defer inboundConnection.Close()
+
+		deadlineError := setReadDeadline(inboundConnection, timeout)
+		if deadlineError != nil {
+			error <- deadlineError
+			return
+		}
 
 		query := serverListQuery{0x31, byte(region), cursor_FirstRequest, filter}
 		for {
 			_, writeError := outboundConnection.Write(query.bytes())
 			if writeError != nil {
 				error <- writeError
-				break
+				return
 			}
 
 			reader := bufio.NewReader(inboundConnection)
@@ -95,7 +105,7 @@ func GetServerList(masterServer string, region ServerRegion, filter string) (<-c
 
 			if readError != nil {
 				error <- readError
-				break
+				return
 			}
 
 			servers <- readServers
@@ -104,7 +114,7 @@ func GetServerList(masterServer string, region ServerRegion, filter string) (<-c
 				query = serverListQuery{0x31, byte(region), readServers[len(readServers)-1].String(), filter}
 			} else {
 				error <- ChannelExhausted
-				break
+				return
 			}
 		}
 	}()

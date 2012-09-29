@@ -61,7 +61,9 @@ func (serverInfo ServerInfo) String() string {
 //
 // One of 2 things will happen: either the server information is published on the server information channel or an error is published
 // on the error channel.
-func GetServerInfo(server string) (<-chan *ServerInfo, <-chan error) {
+//
+// A timeout value is required. For example: 500ms. See time.ParseDuration for more information.
+func GetServerInfo(server string, timeout string) (<-chan *ServerInfo, <-chan error) {
 	serverInfoChannel := make(chan *ServerInfo)
 	errorChannel := make(chan error)
 
@@ -69,18 +71,27 @@ func GetServerInfo(server string) (<-chan *ServerInfo, <-chan error) {
 		outboundConnection, connectError := connect(server)
 		if connectError != nil {
 			errorChannel <- connectError
+			return
 		}
 		defer outboundConnection.Close()
 
 		inboundConnection, listenError := listen(outboundConnection.LocalAddr().(*net.UDPAddr))
 		if listenError != nil {
 			errorChannel <- listenError
+			return
 		}
 		defer inboundConnection.Close()
+
+		deadlineError := setReadDeadline(inboundConnection, timeout)
+		if deadlineError != nil {
+			errorChannel <- deadlineError
+			return
+		}
 
 		_, writeError := outboundConnection.Write(request_A2S_INFO)
 		if writeError != nil {
 			errorChannel <- writeError
+			return
 		}
 
 		reader := bufio.NewReader(inboundConnection)
@@ -88,6 +99,7 @@ func GetServerInfo(server string) (<-chan *ServerInfo, <-chan error) {
 		_, readError := reader.Read(headerBytes)
 		if readError != nil {
 			errorChannel <- readError
+			return
 		}
 
 		buffer := bytes.NewBuffer(headerBytes)
