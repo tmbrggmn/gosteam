@@ -39,7 +39,7 @@ Until I've figured out a way to include the documentation as a stand-alone thing
 
 In order of importance:
 
-1.  Add time-out support to the server query functions so that clients can avoid getting stuck when something goes wrong reading from the UDP connection
+1.  ~~Add time-out support to the server query functions so that clients can avoid getting stuck when something goes wrong reading from the UDP connection~~ (added since 29/09/2012)
 
 2.  Add support for A2S_PLAYER server queries
 
