@@ -9,6 +9,10 @@ import (
 var (
 	// Indicates that a channel has been exhausted.
 	ChannelExhausted = errors.New("channel_exhausted")
+	// Indicates that the client received and unexpected reply.
+	UnexpectedReply = errors.New("Client received an unexpected reply")
+	// Indicates that the server replied, but less than what is expected.
+	NotEnoughBytes = errors.New("Client received too few bytes from the server")
 )
 
 // Connect to the given address (in <ip>:<port> form) and return the UDP connection or an error.

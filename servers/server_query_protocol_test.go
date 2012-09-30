@@ -63,3 +63,14 @@ func ExampleGetServerInfo() {
 		fmt.Errorf("Error during server info fetching: %s", error.Error())
 	}
 }
+
+func TestGetPlayerInfo(t *testing.T) {
+	playerInfoChannel, errorChannel := GetPlayerInfo("89.163.177.130:27022", "500ms")
+
+	select {
+	case playerInfo := <-playerInfoChannel:
+		t.Log(playerInfo)
+	case error := <-errorChannel:
+		t.Fatalf("Error during player info fecthing: %s", error)
+	}
+}
