@@ -24,12 +24,13 @@ Check out the tests or [documentation](#documentation) to see how you can use th
 
 ### Documentation
 
-Until I've figured out a way to include the documentation as a stand-alone thing (in a downloadable archive, online or something else) you can get the documentation yourself by downloading the source (using `go get`) and starting the `godoc` server with the following command: `godoc -http :6060`. You can then browse the documentation using your browser on `http://localhost:6060`.
+[API documentation](http://go.pkgdoc.org/github.com/tmbrggmn/gosteam) is available on the rather brilliant [pkgdoc.com site](http://go.pkgdoc.org).
 
 ## Features
 
 * Query the master server(s) to get a server list (`servers.GetServerList`)
 * Query individual servers to get their information (`servers.GetServerInfo`)
+* Query individual servers for their player list, including basic player information (`servers.GetPlayerInfo`)
 
 ## Packages
 
@@ -43,7 +44,7 @@ In order of importance:
 
 1.  ~~Add time-out support to the server query functions so that clients can avoid getting stuck when something goes wrong reading from the UDP connection~~ (added since 29/09/2012)
 
-2.  Add support for A2S_PLAYER server queries
+2.  ~~Add support for A2S_PLAYER server queries~~ (added since 30/09/2012)
 
 3.  Add support for the RCON protocol
     
