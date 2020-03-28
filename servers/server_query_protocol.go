@@ -271,10 +271,7 @@ func openConnections(server string, timeout string) (outboundConnection *net.UDP
 		return
 	}
 
-	inboundConnection, error = listen(outboundConnection.LocalAddr().(*net.UDPAddr))
-	if error != nil {
-		return
-	}
+	inboundConnection = outboundConnection
 
 	error = setReadDeadline(inboundConnection, timeout)
 	if error != nil {
